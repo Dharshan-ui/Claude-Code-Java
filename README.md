@@ -17,20 +17,3 @@ A lightweight, autonomous AI coding assistant built from scratch in Java. It int
 Run the program with a prompt:
 ```bash
 java -cp "target/classes;target/dependency/*" Main -p "Your prompt here"
-
-### Step 4: Wipe Git History (Crucial for Zero Evidence)
-Right now, your past commit messages might contain references to the challenge. To completely wipe your commit history and start fresh with a single clean commit, run:
-
-```powershell
-# Create a fresh temporary branch with all your current files
-git checkout --orphan fresh-start
-
-# Stage everything
-git add .
-
-# Make a brand new, clean initial commit
-git commit -m "Initial commit: Custom Java Claude Agent"
-
-# Replace the old master branch with your fresh one
-git branch -D master
-git branch -m master
