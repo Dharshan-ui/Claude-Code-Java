@@ -1,53 +1,42 @@
 # Claude Code Java
 
-A lightweight AI coding agent built from scratch in Java.
+A lightweight AI coding agent built from scratch in Java — connects an LLM (via OpenRouter) to your local filesystem and shell, letting it read files, write code, run commands, and reason through multi-step tasks.
 
-The project uses an LLM through the OpenRouter API and gives the model access to local tools for reading files, writing files, and executing shell commands.
+## What It Does
 
-The goal is to build an agent that can understand a natural-language coding task, inspect a workspace, make changes, run commands, and return the results to the user.
-
-## Features
-
-- Interactive command-line interface
-- Multi-turn conversation history
-- LLM-powered agent loop
-- File reading
-- File creation and modification
-- Shell command execution
-- Cross-platform command execution
-- Tool calling through the OpenAI-compatible API
-- OpenRouter integration
-- Single-prompt mode using `-p`
+- 🤖 **Agent Loop** — maintains context across multiple tool calls per task
+- 📖 **Read Files** · ✍️ **Write Files** · 💻 **Run Shell Commands**
+- 🔄 **Tool Calling** — the LLM decides when a tool is needed
+- 💬 **Interactive CLI** — chat with it turn by turn, or fire a single prompt
 
 ## Architecture
 
-```text
-User
-  |
-  v
-Java CLI
-  |
-  v
-LLM via OpenRouter
-  |
-  v
-Tool decision
-  |
-  +------------------+
-  |                  |
-  v                  v
-Read File         Write File
-  |                  |
-  +--------+---------+
-           |
-           v
-       Bash / Shell
-           |
-           v
-      Tool Result
-           |
-           v
-          LLM
-           |
-           v
-      Final Response
+User → CLI → LLM → Tool Call → [Read | Write | Bash] → Tool Result → LLM → Final Response
+
+
+## Tech Stack
+Java 25 · Maven · OpenAI Java SDK · Jackson · OpenRouter · Claude Haiku
+
+## Usage
+
+Interactive mode:
+
+./run.sh
+
+Claude Code Java
+Type 'exit' to quit.
+
+create a Java solution for Two Sum
+exit
+
+
+Single-prompt mode:
+
+./run.sh -p "Create a Java solution for Two Sum"
+
+
+## Configuration
+Set `OPENROUTER_API_KEY` as an environment variable. Never commit API keys or `.env` files.
+
+## Status
+Core agent loop, tool calling, interactive/single-prompt CLI, and file/shell execution are implemented. No sandboxing yet — tools can read, write, and execute anywhere the process has access. Built as a hands-on exploration of agentic AI systems.
