@@ -20,7 +20,7 @@ Java 25 · Maven · OpenAI Java SDK · Jackson · OpenRouter · Claude Haiku
 
 ## Usage
 
-Interactive mode:
+Interactive mode(Bash):
 ```
 ./run.sh
 ```
