@@ -11,8 +11,9 @@ A lightweight AI coding agent built from scratch in Java — connects an LLM (vi
 
 ## Architecture
 
+```
 User → CLI → LLM → Tool Call → [Read | Write | Bash] → Tool Result → LLM → Final Response
-
+```
 
 ## Tech Stack
 Java 25 · Maven · OpenAI Java SDK · Jackson · OpenRouter · Claude Haiku
@@ -20,20 +21,21 @@ Java 25 · Maven · OpenAI Java SDK · Jackson · OpenRouter · Claude Haiku
 ## Usage
 
 Interactive mode:
-
+```
 ./run.sh
-
+```
+```
 Claude Code Java
 Type 'exit' to quit.
 
-create a Java solution for Two Sum
-exit
-
+> create a Java solution for Two Sum
+> exit
+```
 
 Single-prompt mode:
-
+```
 ./run.sh -p "Create a Java solution for Two Sum"
-
+```
 
 ## Configuration
 Set `OPENROUTER_API_KEY` as an environment variable. Never commit API keys or `.env` files.
