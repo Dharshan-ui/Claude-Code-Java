@@ -1,19 +1,53 @@
-# Custom Claude Code Agent in Java
+# Claude Code Java
 
-A lightweight, autonomous AI coding assistant built from scratch in Java. It interacts with LLMs via OpenRouter, parses tool calls in a continuous agent loop, and executes local system actions.
+A lightweight AI coding agent built from scratch in Java.
+
+The project uses an LLM through the OpenRouter API and gives the model access to local tools for reading files, writing files, and executing shell commands.
+
+The goal is to build an agent that can understand a natural-language coding task, inspect a workspace, make changes, run commands, and return the results to the user.
 
 ## Features
-- **Conversational Agent Loop**: Maintains conversation history and reasons through multi-step tasks.
-- **File Operations**: Safely reads files and writes/creates new files dynamically.
-- **Cross-Platform Bash Execution**: Executes native shell commands directly on your OS to run tests, inspect directories, and manage your workspace.
 
-## Tech Stack
-- Java
-- OpenAI Java SDK & OkHttp
-- Jackson (JSON parsing)
-- OpenRouter API (`anthropic/claude-haiku-4.5`)
+- Interactive command-line interface
+- Multi-turn conversation history
+- LLM-powered agent loop
+- File reading
+- File creation and modification
+- Shell command execution
+- Cross-platform command execution
+- Tool calling through the OpenAI-compatible API
+- OpenRouter integration
+- Single-prompt mode using `-p`
 
-## Usage
-Run the program with a prompt:
-```bash
-java -cp "target/classes;target/dependency/*" Main -p "Your prompt here"
+## Architecture
+
+```text
+User
+  |
+  v
+Java CLI
+  |
+  v
+LLM via OpenRouter
+  |
+  v
+Tool decision
+  |
+  +------------------+
+  |                  |
+  v                  v
+Read File         Write File
+  |                  |
+  +--------+---------+
+           |
+           v
+       Bash / Shell
+           |
+           v
+      Tool Result
+           |
+           v
+          LLM
+           |
+           v
+      Final Response

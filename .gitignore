@@ -1,8 +1,16 @@
-/target/
-/maven.zip
-/apache-maven-3.9.9/
+# Maven
+target/
+maven.zip
+apache-maven-3.9.9/
+
+# IDE
 .idea/
 *.iml
-desktop.ini
+
+# Environment / secrets
 .env
 *.env
+
+# OS files
+desktop.ini
+.DS_Store
